@@ -1,0 +1,110 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Gráfico</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        #chartContainer {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="es"></html>
+
+    <center><h1>Formulario de Ventas</h1></center>
+
+    <form id="salesForm">
+        <label for="january">Enero:</label>
+        <input type="number" id="january" name="january" min="0" value="0">
+        <label for="february">Febrero:</label>
+        <input type="number" id="february" name="february" min="0" value="0">
+        <label for="march">Marzo:</label>
+        <input type="number" id="march" name="march" min="0" value="0">
+        <label for="april">Abril:</label>
+        <input type="number" id="april" name="april" min="0" value="0">
+        <label for="may">Mayo:</label>
+        <input type="number" id="may" name="may" min="0" value="0">
+        <label for="june">Junio:</label>
+        <input type="number" id="june" name="june" min="0" value="0">
+        <label for="july">Julio:</label>
+        <input type="number" id="july" name="july" min="0" value="0">
+        <label for="august">Agosto:</label>
+        <input type="number" id="august" name="august" min="0" value="0">
+        <label for="september">Septiembre:</label>
+        <input type="number" id="september" name="september" min="0" value="0">
+        <label for="october">Octubre:</label>
+        <input type="number" id="october" name="october" min="0" value="0">
+        <label for="november">Noviembre:</label>
+        <input type="number" id="november" name="november" min="0" value="0">
+        <label for="december">Diciembre:</label>
+        <input type="number" id="december" name="december" min="0" value="0">
+
+        <button type="button" onclick="generateChart()">Generar Gráfico</button>
+    </form>
+
+    <div id="chartContainer">
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <script>
+        function generateChart() {
+            // Obtener los valores de ventas de cada mes desde el formulario
+            const january = parseInt(document.getElementById('january').value, 10);
+            const february = parseInt(document.getElementById('february').value, 10);
+            const march = parseInt(document.getElementById('march').value, 10);
+            const april = parseInt(document.getElementById('april').value, 10);
+            const may = parseInt(document.getElementById('may').value, 10);
+            const june = parseInt(document.getElementById('june').value, 10);
+            const july = parseInt(document.getElementById('july').value, 10);
+            const august = parseInt(document.getElementById('august').value, 10);
+            const september = parseInt(document.getElementById('september').value, 10);
+            const october = parseInt(document.getElementById('october').value, 10);
+            const november = parseInt(document.getElementById('november').value, 10);
+            const december = parseInt(document.getElementById('december').value, 10);
+
+            // Array Valores Ventas
+            const salesData = [january, february, march, april, may, june, july, august, september, october, november, december];
+
+            // Array Colores
+            const colors = ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'];
+
+            // Configuración del gráfico
+            const ctx = document.getElementById('salesChart').getContext('2d');
+            const salesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    datasets: [{
+                        label: 'Ventas por Mes',
+                        data: salesData,
+                        backgroundColor: colors,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+    </script>
+
+</body>
+</html>
